@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+  html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 28vh; 
+  }
+
+  * { 
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+  }
+
+  .head {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 11vh; 
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 4vw;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      flex-wrap: wrap; 
+      gap: 10px;
+  }
+
+  .left {
+      display: flex;
+      align-items: center;
+      gap: 2vw;
+  }
+
+  .name {
+      font-size: max(16px, 1.3vw); 
+      font-weight: 700;
+      color: #000;
+  }
+
+  .social-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+  }
+
+  .social-left i {
+      font-size: max(18px, 1.7vw);
+      cursor: pointer;
+      filter: brightness(0);
+      transition: 0.3s;
+  }
+
+  .social-left i:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 10px black);
+  }
+
+  .menu {
+      display: flex;
+      gap: 2vw;
+      background: rgba(245,245,245,0.9);
+      padding: .7vw 2.3vw;
+      border-radius: 3vw;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .menu a {
+      text-decoration: none;
+      color: #444;
+      font-size: max(12px, 0.95vw);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4vw;
+      transition: 0.25s;
+  }
+
+  .menu a i {
+      font-size: max(12px, 1vw);
+  }
+
+  .menu a:hover {
+      color: #1e90ff;
+  }
+
+  .right {
+      display: flex;
+      align-items: center;
+      gap: 1.7vw;
+  }
+
+  .mode {
+      padding: .6vw 1.3vw;
+      border-radius: .6vw;
+      background: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: max(12px, 0.9vw);
+      font-weight: 600;
+      min-height: 30px;
+  }
+
+  .touch {
+      padding: .5vw 1.1vw;
+      border-radius: .5vw;
+      border: none;
+      background: linear-gradient(90deg,#1e90ff,#7c5cff);
+      color: white;
+      cursor: pointer;
+      font-size: max(12px, 0.9vw);
+      font-weight: 600;
+      transition: 0.25s;
+      white-space: nowrap;
+      min-height: 30px;
+  }
+
+  .touch:hover {
+      transform: scale(1.07);
+  }
+
+  /* Dark Mode Styles */
+  .dark-mode {
+     background: #0d1117 !important;           
+     color: white !important;
+    }
+
+  .dark-mode .name { 
+    color: white;
+    }
+
+  .dark-mode .social-left { 
+    filter: invert(1) brightness(2); 
+    }
+
+  .dark-mode .subtitle, 
+  .dark-mode .desc, 
+  .dark-mode .certext, 
+  .dark-mode .certfooter, 
+  .dark-mode .achdesc, 
+  .dark-mode .gettext, 
+  .dark-mode .footername, 
+  .dark-mode .projectdesc, 
+  .dark-mode .certdesc { 
+    color: #cacaca; 
+    }
+
+  .dark-mode .achtitle, 
+  .dark-mode .gettitle, 
+  .dark-mode .certtitle, 
+  .dark-mode .projecttitle { 
+    color: #53cbff; 
+    }
+
+  .dark-mode .skills-box { 
+    background: #0d1117 !important;
+    }
+
+  .dark-mode .skill-item p {
+     color: white;
+    }
+
+  .dark-mode .head { 
+    background: #161b22 !important; 
+    box-shadow: 0 4px 20px rgba(255,255,255,0.05);
+    }
+
+  .dark-mode .menu {
+    background: rgba(255,255,255,0.08); 
+    border-color: rgba(255,255,255,0.08);
+    }
+
+  .dark-mode .menu a {
+    color: #ddd;
+    }
+
+  .dark-mode .menu a:hover {
+     color: #68a1e3; 
+    }
+  .dark-mode .projectbox,
+  .dark-mode .certbox,
+  .dark-mode .skill-item,
+  .dark-mode .boxabout,
+  .dark-mode .achbox,
+  .dark-mode .getbox {
+    background: #161b22 !important;
+    border-color: #30363d !important;
+    color: white !important;
+    }
+
+  .dark-mode .projectintro,
+  .dark-mode .skillsintro {
+    color: #f5f5f6;
+    }
+
+  .dark-mode hr {
+    background: linear-gradient(90deg,#00b4ff,#c700ff) !important;
+    }
+
+  .dark-mode .footer {
+    background: #161b22 !important;
+    border-color: #30363d !important; 
+    }
+
+  .dark-mode .footersocial i { 
+    color: white; 
+    }
+
+
+  #heroBadge {
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      white-space: nowrap;
+  }
+
+  .hero {
+      margin-top: 38vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+  }
+
+  .title {
+      font-size: max(32px, 4vw);
+      font-weight: 800;
+      line-height: 1.2;
+  }
+
+  .subtitle {
+      font-size: max(16px, 1.6vw);
+      margin-top: 1vw;
+      color: #444;
+  }
+
+  .desc {
+      font-size: max(14px, 1.1vw);
+      margin-top: 1vw;
+      width: 45vw;
+      min-width: 300px; 
+      color: #555;
+      line-height: 1.6;
+  }
+
+  .btn-main {
+      margin-top: 2vw;
+      padding: .9vw 2.5vw;
+      font-size: max(14px, 1.1vw);
+      border: none;
+      border-radius: 2vw;
+      background: #0057ff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  .btn-main:hover { transform: scale(1.07); }
+
+  hr {
+      width: 90%;
+      margin: 9vw auto 0 auto;
+      height: 2.5px;
+      background: linear-gradient(90deg, #0066ff, #9900ff);
+      border: none;
+      border-radius: 10px;
+  }
+
+
+  #abouthero {
+      position: absolute;
+      top: -6vw; 
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(147, 36, 36, 0.15);
+  }
+
+  .about {
+    position: relative;
+    margin-top: 10vw;
+  }
+
+  .boxabout {
+      width: 80vw;
+      min-height: 60vh;
+      margin: 4vw auto; 
+      border: 2px solid rgb(211,211,211);
+      border-radius: 10px;
+      background-color: #cdf8ff6d;
+      padding: 2vw;
+      position: relative;
+  }
+
+  .boxabout img {
+      margin-top: -0.7vw;
+      width: 15vw;
+      float: right; 
+      margin-right: 5vw;
+      border-radius: 10px;
+      border: 1px solid rgb(13, 158, 255);
+  }
+
+  .boxabout img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px #d9a2d5, 0 0 25px #c6a1df;
+  }
+
+  .boxabout .text {
+      margin-left: 1vw;
+      width: 60%;
+      font-size: max(14px, 1vw);
+      line-height: 1.8;
+  }
+
+  .about hr { margin: 3vw auto; }
+
+  /* --- PROJECTS --- */
+  #projecthero {
+      position: relative;
+      margin-top: 1vw;
+      display: inline-block;
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(147,36,36,0.15);
+      margin-bottom: 2rem;
+  }
+
+  .project {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 4vw;
+  }
+
+  .projectintro {
+      text-align: center;
+      color: #444;
+      font-size: max(14px, 1.1vw);
+  }
+
+  .project-section {
+      width: 100%;
+      margin-top: 2vw;
+      display: flex;
+      justify-content: center;
+  }
+
+  .projectcontainer {
+      width: 80vw;
+      display: flex;
+      justify-content: space-between;
+      gap: 2vw;
+      flex-wrap: wrap; 
+  }
+
+  .projectbox {
+      width: 25vw;
+      min-width: 300px;
+      min-height: 58vh;
+      background: #eaf4ff;
+      border: 1px solid #c9d9ff;
+      border-radius: 12px;
+      padding: 1.2vw;
+      box-shadow: 0 0 20px rgba(0,0,0,0.07);
+      transition: 0.3s;
+      margin-bottom: 2vw;
+  }
+
+  .projectbox:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0,102,255,0.25);
+  }
+
+  .projectbox img {
+      width: 100%;
+      height: 25vh;
+      object-fit: cover;
+      border-radius: 10px;
+  }
+
+  .projecttitle {
+      margin-top: 1vw;
+      font-size: max(16px, 1.3vw);
+      font-weight: 700;
+      color: #003d99;
+  }
+
+  .projectdesc {
+      margin-top: .1vw;
+      font-size: max(14px, 1vw);
+      color: #444;
+  }
+
+  .projectlinks {
+      margin-top: 1.5vw;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+  }
+
+  .githubbtn, .morebtn {
+      padding: .5vw 1.5vw;
+      font-size: max(12px, .95vw);
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      min-height: 35px;
+  }
+  
+  .githubbtn {
+    background: black; 
+    color: white; 
+    }
+
+  .morebtn { 
+    background: #0057ff; 
+    color: white; 
+    }
+
+  .projectlinks .githubbtn:hover,
+  .projectlinks .morebtn:hover {
+    transform: scale(1.05); 
+    }
+
+  /* --- SKILLS --- */
+  .skills {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5vw;
+  }
+  
+  #skillshero {
+      position: relative;
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(147,36,36,0.15);
+  }
+
+  .skillsintro {
+      margin-top: 2vw;
+      font-size: max(14px, 1.1vw);
+  }
+
+  .skills-wrapper {
+      width: 90vw;
+      margin: 4vw auto;
+      display: flex;
+      justify-content: center;
+  }
+
+  .skills-box {
+      width: 100%; 
+      padding: 3vw;
+      background: #f5f9ff;
+      border-radius: 20px;
+      border: 2px solid #d6e4ff;
+      box-shadow: 0 0 25px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: center; 
+      flex-wrap: wrap;
+      gap: 2vw; 
+  }
+
+  .skill-item {
+      flex: 1 1 160px; 
+      max-width: 250px; 
+      background: #ffffff;
+      border: 1px solid #c9d9ff;
+      border-radius: 12px;
+      padding: 1.2vw;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+      transition: 0.3s;
+  }
+
+  .skill-item:hover { 
+    transform: scale(1.05);
+ }
+  .skill-item img {
+     width: 5vw; 
+     height: 5vw;
+    min-width: 50px;
+     object-fit: contain; 
+    }
+  .skill-item p {
+    margin-top: 0.7vw;
+    font-size: max(14px, 1vw);
+    font-weight: 600; color: #003d99;
+    }
+
+  .bar {
+    width: 100%;
+    height: 0.7vw;
+    min-height: 6px;
+    background: #e0e7ff;
+    border-radius: 10px;
+    margin-top: 0.8vw;
+    overflow: hidden; 
+    }
+
+  .fill {
+    height: 100%; 
+    background: linear-gradient(90deg,#0066ff,#9900ff); 
+    border-radius: 10px; 
+    }
+
+  .percent {
+    display: block;
+    margin-top: 0.5vw; 
+    font-size: max(12px, 0.9vw); 
+    font-weight: 600; 
+    }
+
+  /* --- CERTIFICATES --- */
+  .certificates {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5vw;
+  }
+
+  #certhero {
+      position: relative;
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(147,36,36,0.15);
+      margin-top: -3vw;
+  }
+
+  .certext {
+    text-align: center; 
+    font-size: max(14px, 1.1vw); 
+    color: #444; 
+    margin-top: 2vw; 
+    }
+
+  .cert-section {
+    width: 100%;
+    margin-top: 2vw; 
+    display: flex; 
+    justify-content: center; 
+    }
+
+  .certcontainer { 
+    width: 80vw; 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 2vw; 
+    flex-wrap: wrap; 
+    }
+
+  .certbox {
+      width: 18vw;
+      min-width: 250px; 
+      min-height: 54vh;
+      background: #eaf4ff;
+      border: 1px solid #c9d9ff;
+      border-radius: 12px;
+      padding: 1vw;
+      box-shadow: 0 0 15px rgba(0,0,0,0.07);
+      transition: 0.3s;
+      margin-bottom:1vw;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .certbox:hover {
+    transform: scale(1.03);
+    }
+
+  .certbox img {
+    width: 100%; 
+    height: 22vh; 
+    border-radius: 10px; 
+    object-fit: cover;
+    }
+
+  .certtitle {
+    margin-top: 1vw;
+    font-size: max(16px, 1.2vw);
+    font-weight: 700;
+    color: #003d99;
+    }
+
+  .certdesc { 
+    margin-top: .6vw; 
+    font-size: max(12px, .9vw); 
+    color: #444; 
+    flex-grow: 1; 
+    }
+
+  .certbtn {
+    margin-top: 1.5vw; 
+    padding: .6vw 1.3vw; 
+    font-size: max(12px, .9vw); 
+    background: black; color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    min-height: 30px; 
+    }
+
+  .certbox .certbtn:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 25px rgb(171, 171, 171);
+    }
+
+  .certfooter {
+    text-align: center; 
+    font-size: max(12px, 1vw); 
+    color: #333; 
+    margin-top: 1vw; 
+    }
+
+  .certificates hr{
+    margin-top: 3vw;
+  }
+
+  /* --- ACHIEVEMENTS --- */
+  .achieve {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5vw;
+  }
+
+  #achhero {
+      position: relative;
+      background: #ffffff;
+      padding: .8vw 2vw;
+      border-radius: .6vw;
+      color: #0b5db0;
+      font-weight: 800;
+      font-size: max(16px, 1.8vw);
+      box-shadow: 0 10px 40px rgba(147,36,36,0.15);
+      margin-top: -2vw;
+  }
+
+  .achbox {
+      width: 85vw;
+      margin: 3vw auto;
+      padding: 2vw;
+      background: #f0f7ff;
+      border: 2px solid #d6e4ff;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.06);
+      flex-wrap: wrap; 
+      gap: 2rem;
+  }
+
+  .achleft { 
+    width: 40%; 
+    min-width: 300px; 
+    flex: 1;
+    }
+
+  .achlogo { 
+    width: 6vw; 
+    min-width: 60px; 
+    margin-bottom: 1vw; 
+    }
+
+  .achtitle { 
+    font-size: max(20px, 1.6vw); 
+    font-weight: 700; 
+    color: #003d99; 
+    }
+
+  .achdesc {
+    margin-top: 1vw;
+    font-size: max(14px, 1vw);
+    color: #444;
+    line-height: 1.6;
+    }
+
+  .achslider {
+      position: relative;
+      width: 40%;
+      min-width: 300px; 
+      height: 25vw;
+      min-height: 250px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 2px solid #c9d9ff;
+      background: white;
+  }
+
+  .achieve hr{
+    margin-top: 1vw;
+  }
+
+  .slidecontainer {
+    width: 100%;
+    height: 100%;
+    }
+
+  .slideimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    border-radius: 12px;
+    }
+
+  .prevbtn, .nextbtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0.5vw 1vw;
+      font-size: max(20px, 1.6vw);
+      border: none;
+      background: #0066ff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: 0.3s;
+  }
+  .prevbtn:hover,
+  .nextbtn:hover { 
+    opacity: 1;
+    }
+
+  .prevbtn {
+    left: 1vw;
+    }
+
+  .nextbtn {
+    right: 1vw;
+    }
+
+  /* --- GET IN TOUCH --- */
+  .get { width: 100%; display: flex; justify-content: center; margin-top: 6vw; }
+  .getbox {
+      width: 70vw;
+      padding: 3vw;
+      background: #f5f9ff;
+      border: 2px solid #d6e4ff;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.06);
+      text-align: center;
+  }
+  .gettitle { 
+    font-size: max(24px, 2vw); 
+    font-weight: 700; 
+    color: #003d99; 
+    margin-bottom: 1vw; 
+    }
+
+  .gettext { 
+    font-size: max(14px, 1.1vw); 
+    color: #555; 
+    line-height: 1.7;
+    }
+
+  /* --- FOOTER --- */
+  .footer {
+      width: 100%;
+      margin-top: 5vw;
+      padding: 2vw 0;
+      background: #eef3ff;
+      border-top: 2px solid #d2ddff;
+  }
+  .footercontent {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5vw;
+      flex-wrap: wrap;
+      gap: 15px;
+  }
+  .footername {
+    font-size: max(12px, 1vw); 
+    color: #444; 
+    font-weight: 600; 
+    }
+
+  .footersocial { 
+    display: flex; 
+    gap: 1.4vw; 
+    }
+
+  .footersocial i { 
+    font-size: max(18px, 1.5vw); 
+    cursor: pointer; 
+    transition: .3s; 
+    color: #003d99; 
+    }
+
+  .footersocial i:hover {
+    transform: scale(1.15); 
+    color: #0057ff;
+    }
+
+  /* --- ADJUSTMENT MEDIA QUERIES --- */
+  @media (max-width: 850px) {
+      .head { 
+        flex-direction: column;
+        padding: 1rem;
+        }
+
+      .menu {
+        order: 3;
+        width: 100%;
+        }
+
+      .right {
+        order: 2;
+        }
+
+      .left {
+        width: 100%;
+        justify-content: center;
+        }
+      
+      /* Fix About Section Layout on Mobile */
+      .boxabout {
+        display: flex; 
+        flex-direction: column-reverse; 
+        height: auto; 
+        text-align: center; 
+        }
+
+      .boxabout img { 
+        float: none; 
+        margin: 0 auto; 
+        width: 50%; 
+        margin-bottom: 20px; 
+        }
+
+      .boxabout .text { 
+        width: 100%; 
+        margin: 0; 
+        }
+      
+      .projectcontainer,
+      .certcontainer, 
+      .skills-box, 
+      .achbox {
+        justify-content: center; 
+        }
+
+      .footercontent {
+        justify-content: center; 
+        text-align: center; 
+        }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="head">
+    <div class="left">
+        <div class="name">Jaswanth Simha</div>
+        <div class="social-left">
+            <i class="bi bi-github" onclick="window.open('https://github.com/jaswanth5-jashu')"></i>
+            <i class="bi bi-instagram" onclick="window.open('https://www.instagram.com/_.jaswanth5._/')"></i>
+            <i class="bi bi-linkedin" onclick="window.open('https://www.linkedin.com/in/bobbillapati-jaswanth-simha-95312124b/')"></i>
+        </div>
+    </div>
+
+    <div class="menu">
+        <a href="#"><i class="bi bi-house-door"></i> Home</a>
+        <a href="#about"><i class="bi bi-person"></i> About</a>
+        <a href="#projects"><i class="bi bi-grid"></i> Projects</a>
+        <a href="#skills"><i class="bi bi-stars"></i> Skills</a>
+        <a href="#certificates"><i class="bi bi-patch-check"></i> Certificates</a>
+        <a href="#achievements"><i class="bi bi-trophy"></i> Achievements</a>
+    </div>
+
+    <div class="right">
+        <button class="mode" id="modeToggle">
+            <i id="modeIcon" class="bi bi-moon"></i>
+        </button>
+        <button class="touch" onclick="window.location.href='getintouch.html'">
+        Get in Touch
+        </button>
+    </div>
+</header>
+
+<script>
+    let modeBtn = document.getElementById("modeToggle");
+    let modeIcon = document.getElementById("modeIcon");
+
+    modeBtn.onclick = () => {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            modeIcon.classList.remove("bi-moon");
+            modeIcon.classList.add("bi-sun");
+        } else {
+            modeIcon.classList.remove("bi-sun");
+            modeIcon.classList.add("bi-moon");
+        }
+    };
+</script>
+
+<div id="heroBadge">AI Learner</div>
+
+<section class="hero">
+    <h1 class="title">Hi, I'm Bobbillapati Jaswanth Simha</h1>
+    <h2 class="subtitle">Python Full Stack Developer | Software Developer | AI & ML Learner</h2>
+    <p class="desc">
+        I work with Python, SQL, HTML, CSS, and JavaScript to build intelligent applications and smooth user experiences.
+        I enjoy creating simple, scalable, and modern solutions using clean code and smart design.
+    </p>
+    <button class="btn-main" onclick="window.open('https://drive.google.com/file/d/1R3EPIMhaG4oEwoWpwHOSZmup1uqyc4QW/view?usp=drive_link')">📄 View Resume</button>
+    <hr>
+</section>
+
+<script>
+    let roles=["AI Explorer", "Software Developer", "Full Stack Engineer", "Content Editor", "Cinematographer"]
+    let i=0;
+    setInterval(()=>{
+      i=(i+1)%roles.length;
+      document.getElementById("heroBadge").innerText=roles[i];
+    },3000);
+</script>
+
+<section class="about" id="about">
+  <div id="abouthero">About</div>
+  <div class="boxabout">
+    <img src="photome.jpg" alt="">
+    <div class="text">
+        I’m <b>Bobbillapati Jaswanth Simha</b>, a <b>2025 graduate from CMR Technical Campus</b>.<br>
+        I’m passionate about building modern, intelligent, and high-performance applications that merge creativity with strong engineering fundamentals.<br><br>
+        As a fresher, I may not have industry experience, but I have proven skills in <b>Python Full Stack Development</b>, <b>Software Development</b>, and I’m actively learning <b>AI & Machine Learning</b>.<br><br>
+        I have solid hands-on knowledge of <b>Python, SQL, HTML, CSS, and JavaScript</b>, and I enjoy working on projects that help me explore frameworks, optimize systems, and build clean, maintainable code structures.<br><br>
+        I also work as a <b>Video Editor</b> and <b>Cinematographer</b>, bringing visual storytelling and creative thinking into my technical work.
+    </div>
+  </div>
+  <hr>
+</section>
+
+<section class="project" id="projects">
+    <div id="projecthero">Project</div>
+     <p class="projectintro">
+        Here are some of the projects I have built with passion and creativity.<br>
+        Each one reflects my learning, skills, and problem-solving approach.
+    </p>
+
+    <div class="project-section">
+        <div class="projectcontainer">
+            <div class="projectbox">
+                <img src="project1_1.png" alt="">
+                <div class="projecttitle">Deep Learning–Powered Traffic Surveillance System</div>
+                <div class="projectdesc">Real-time traffic surveillance and detection using deep learning and computer vision.</div>
+                <div class="projectlinks">
+                    <button class="githubbtn" 
+                        onclick="window.location.href='https://github.com/jaswanth5-jashu/project-traffic'">
+                        GitHub
+                    </button>
+                    <button class="morebtn" onclick="window.location.href='main_project1.html'">
+                    More About
+                    </button>
+                </div>
+            </div>
+
+            <div class="projectbox">
+                <img src="projectpic2.png" alt="">
+                <div class="projecttitle">Portfolio Website</div>
+                <div class="projectdesc">A dynamic personal portfolio highlighting my projects, skills, experiences, and career aspirations</div>
+                <div class="projectlinks">
+                    <button class="githubbtn" onclick="window.location.href='https://github.com/jaswanth5-jashu/project-traffic'">
+                    GitHub
+                    </button>
+                    <button class="morebtn" onclick="window.location.href='project2.html'">
+                    More About
+                    </button>
+                </div>
+            </div>
+
+            <div class="projectbox">
+                <img src="projectpic3.png" alt="">
+                <div class="projecttitle">MediAssist: Health Care & Patient Management System</div>
+                <div class="projectdesc">Patient records, medicine suggestions, and nearby medical shops.</div>
+                <div class="projectlinks">
+                    <button class="githubbtn" onclick="window.location.href='https://github.com/jaswanth5-jashu/mediassit-project'">GitHub</button>
+                    <button class="morebtn" onclick="window.location.href='project3.html'">
+                    More About
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+</section>
+
+<section class="skills" id="skills">
+    <div id="skillshero">Skills</div>
+
+    <p class="skillsintro">
+        Technologies I use to build modern & powerful applications
+    </p>
+    <div class="skills-wrapper">
+        <div class="skills-box">
+            <div class="skill-item">
+                <img src="skillpython.png">
+                <p>Python</p>
+                <div class="bar"><div class="fill" style="width:85%;"></div></div>
+                <span class="percent">85%</span>
+            </div>
+            <div class="skill-item">
+                <img src="skillsql.png">
+                <p>MySQL</p>
+                <div class="bar"><div class="fill" style="width:80%;"></div></div>
+                <span class="percent">80%</span>
+            </div>
+            <div class="skill-item">
+                <img src="skillhtml.png">
+                <p>HTML</p>
+                <div class="bar"><div class="fill" style="width:90%;"></div></div>
+                <span class="percent">90%</span>
+            </div>
+            <div class="skill-item">
+                <img src="skillcss.png">
+                <p>CSS</p>
+                <div class="bar"><div class="fill" style="width:90%;"></div></div>
+                <span class="percent">90%</span>
+            </div>
+            <div class="skill-item">
+                <img src="skilljs.png">
+                <p>JavaScript</p>
+                <div class="bar"><div class="fill" style="width:80%;"></div></div>
+                <span class="percent">80%</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>
+
+<section class="certificates" id="certificates">
+  <div id="certhero">Certificates</div>
+  <p class="certext">
+      A collection of the certifications I earned by learning and improving my skills.
+  </p>
+  <div class="cert-section">
+      <div class="certcontainer">
+          <div class="certbox">
+              <img src="certificate1.jpeg">
+              <div class="certtitle">HackerRank Skill test</div>
+              <div class="certdesc">Completed HackerRank Python Skill test.</div>
+              <button class="certbtn" onclick="window.open('https://www.hackerrank.com/certificates/iframe/b8babda63306')">Certificate Link</button>
+          </div>
+          <div class="certbox">
+              <img src="certificate2.png">
+              <div class="certtitle">Python Essentials 1</div>
+              <div class="certdesc">Completed Cisco Networking Academy Python Course.</div>
+              <button class="certbtn" onclick="window.open('https://www.netacad.com/certificates/?issuanceId=923fc782-98b0-4ffc-9495-404958621033')">Certificate Link</button>
+          </div>
+          <div class="certbox">
+              <img src="certificate3.png">
+              <div class="certtitle">Python Course</div>
+              <div class="certdesc">Completed Python complete course from Code With Swaroop.</div>
+              <button class="certbtn" onclick="window.open('https://www.codewithswaroop.com/verify-certificate?serialno=2SNXH09B')">Certificate Link</button>
+          </div>
+          <div class="certbox">
+              <img src="certificate4.jpg">
+              <div class="certtitle">Workshop on ML using Python</div>
+              <div class="certdesc">Completed Workshop on ML using Python.</div>
+              <button class="certbtn" onclick="window.open('https://drive.google.com/file/d/1FU5q6otGKLRNaqYSlkJkLB0IwXaRDot2/view?usp=sharing')">Certificate Link</button>
+          </div>
+      </div>
+  </div>
+  <p class="certfooter">
+      More certificates coming soon as I continue learning and improving.
+  </p>
+  <hr>
+</section>
+
+<section class="achieve" id="achievements">
+  <div id="achhero">Achievements</div>
+  <div class="achbox">
+      <div class="achleft">
+          <img src="ncclogo.png" class="achlogo">
+          <h2 class="achtitle">NCC – National Cadet crops</h2>
+          <p class="achdesc">
+            Completed 'B' and 'C' Certificates of NCC with Merit Grade. <br><br>
+              Participated in the Indian Air Force Attachment Camp 2023, Bidar Represented AP&T under NCC.<br><br>
+              Learned discipline, parade drills, leadership, teamwork, courage,<br><br>
+              and gained exposure to real Air Force environment.
+          </p>
+      </div>
+      <div class="achslider">
+          <div class="slidecontainer">
+              <img src="ach1.jpg" class="slideimg" style="display:block;">
+              <img src="ach2.png" class="slideimg">
+              <video class="slideimg" autoplay muted loop>
+                  <source src="aci_video.mp4" type="video/mp4">
+              </video>
+          </div>
+          <button class="prevbtn">&#10094;</button>
+          <button class="nextbtn">&#10095;</button>
+      </div>
+  </div>
+  <hr>
+</section>
+
+<script>
+    let index = 0;
+    let slides = document.querySelectorAll(".slideimg");
+
+    function showSlide(n){
+        slides.forEach((s,i)=>{
+            s.style.display = (i===n) ? "block" : "none";
+        });
+    }
+
+    document.querySelector(".prevbtn").onclick = ()=>{
+        index = (index-1+slides.length) % slides.length;
+        showSlide(index);
+    };
+
+    document.querySelector(".nextbtn").onclick = ()=>{
+        index = (index+1) % slides.length;
+        showSlide(index);
+    };
+
+    showSlide(0);
+</script>
+
+<section class="get" id="contact">
+    <div class="getbox">
+        <h2 class="gettitle">Want to Get in Touch?</h2>
+        <p class="gettext">                                 
+            If you want to contact me,<br>
+            simply press the <b>Get in Touch</b> button at the top-right corner.
+        </p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footercontent">
+        <p class="footername">© 2025 Jaswanth Simha — All Rights Reserved</p>
+        <div class="footersocial">
+            <i class="bi bi-github" onclick="window.open('https://github.com/jaswanth5-jashu')"></i>
+            <i class="bi bi-instagram" onclick="window.open('https://www.instagram.com/_.jaswanth5._/')"></i>
+            <i class="bi bi-linkedin" onclick="window.open('https://www.linkedin.com/in/bobbillapati-jaswanth-simha-95312124b/')"></i>
+        </div>
+    </div>
+</footer>
+<script>
+document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener("click", function(e) {
+        let href = this.getAttribute("href");
+
+        if (href.startsWith("#") && href.length > 1) {
+            e.preventDefault();
+            let target = document.querySelector(href);
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"   // 💥 scroll section middle
+                });
+            }
+        }
+    });
+});
+</script>
+
+
+</body>
+</html>
